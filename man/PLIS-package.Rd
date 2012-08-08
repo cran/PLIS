@@ -15,7 +15,7 @@ It is noted that, for PLIS, a smaller p value does not necessarily imply more si
 Package: \tab PLIS\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2009-06-19\cr
+Date: \tab 2012-08-08\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }
@@ -23,7 +23,7 @@ main functions: em.hmm & plis
 }
 \author{
 Wei Z, Sun W, Wang K and Hakonarson H\cr
-Maintainer: Zhi Wei <zhiwei@njit.edu> or <zhiwei04@gmail.com>
+Maintainer: Zhi Wei <zhiwei04@gmail.com>
 }
 \references{
  Wei Z, Sun W, Wang K and Hakonarson H, Multiple Testing in Genome-Wide Association Studies via Hidden Markov Models, Bioinformatics, 2009

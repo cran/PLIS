@@ -1,10 +1,10 @@
 Package: PLIS
 Type: Package
-Title: Multiplicity control using Pooled LIS statistics
-Version: 1.0
-Date: 2009-06-19
+Title: Multiplicity control using Pooled LIS statistic
+Version: 1.1
+Date: 2012-08-08
 Author: Zhi Wei & Wenguang Sun
-Maintainer: Zhi Wei <zhiwei@njit.edu>
+Maintainer: Zhi Wei <zhiwei04@gmail.com>
 Description: PLIS is a multiple testing procedure for testing several
         groups of hypotheses. Linear dependency is expected from the
         hypotheses within the same group and is modeled by hidden
@@ -15,7 +15,6 @@ Description: PLIS is a multiple testing procedure for testing several
         SNPs from the same chromosome are treated as a group and
         exhibit strong linear genomic dependency.
 License: GPL-3
-LazyLoad: yes
-Packaged: 2012-08-10 05:24:40 UTC; ripley
+Packaged: 2012-08-11 03:34:15 UTC; Zhi
 Repository: CRAN
-Date/Publication: 2012-08-10 05:27:05
+Date/Publication: 2012-08-11 04:40:46

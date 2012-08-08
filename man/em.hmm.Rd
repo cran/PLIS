@@ -29,7 +29,7 @@ em.hmm(x, L=2, maxiter = 1000, est.null = FALSE)
 }
 }
 \details{
-
+  None.
 }
 \value{
   \item{pii}{the initial state distribution, pii=(prob. of being 0, prob. of being 1)}
@@ -59,7 +59,7 @@ grp1.theta<-grp2.theta<-rep(0,200)
 grp1.theta[grp1.nonNull.loci]=2; grp2.theta[grp2.nonNull.loci]=2
 
 grp1.zval=rnorm(n=length(grp1.theta),mean=grp1.theta)
-grp2.zval=rnorm(n=length(grp2.theta),mean=grp1.theta)
+grp2.zval=rnorm(n=length(grp2.theta),mean=grp2.theta)
 ##Group 1
 #Use default L=2
 grp1.L2rlts=em.hmm(grp1.zval)
@@ -94,34 +94,38 @@ states=plis(c(grp1.BICrlts$LIS,grp2.BICrlts$LIS),fdr=0.1,adjust=FALSE)$States
 ##(2) Example for analyzing Genome-Wide Association Studies (GWAS) data
 #Information in GWAS.SampleData can be obtained by using PLINK
 #http://pngu.mgh.harvard.edu/~purcell/plink/
-data(GWAS.SampleData)
 
-chr1.data=GWAS.SampleData[which(GWAS.SampleData[,"CHR"]==1),]
-chr6.data=GWAS.SampleData[which(GWAS.SampleData[,"CHR"]==6),]
-
-#Make sure SNPs in the linear physical order
-chr1.data<-chr1.data[order(chr1.data[,"BP"]),]
-chr6.data<-chr6.data[order(chr6.data[,"BP"]),]
-
-#convert p values by chi_sq test to z values; odds ratio (OR) is needed.
-chr1.zval<-rep(0, nrow(chr1.data))
-chr1.ors=(chr1.data[,"OR"]>1)
-chr1.zval[chr1.ors]<-qnorm(chr1.data[chr1.ors, "P"]/2, 0, 1, lower.tail=FALSE)
-chr1.zval[!chr1.ors]<-qnorm(chr1.data[!chr1.ors, "P"]/2, 0, 1, lower.tail=TRUE)
-chr1.L2rlts=em.hmm(chr1.zval)
-
-chr6.zval<-rep(0, nrow(chr6.data))
-chr6.ors=(chr6.data[,"OR"]>1)
-chr6.zval[chr6.ors]<-qnorm(chr6.data[chr6.ors, "P"]/2, 0, 1, lower.tail=FALSE)
-chr6.zval[!chr6.ors]<-qnorm(chr6.data[!chr6.ors, "P"]/2, 0, 1, lower.tail=TRUE)
-chr6.L2rlts=em.hmm(chr6.zval)
-
-#Note that for analyzing a chromosome in real GWAS dataset, em.hmm can take as long as 10+ hrs
-#L=2 or 3 is recommended for GWAS based on our experience
-#em.hmm can be run in parallel for different chromosomes before applying the PLIS procedure
-plis.rlts=plis(c(chr1.L2rlts$LIS,chr6.L2rlts$LIS),fdr=0.01)
-all.Rlts=cbind(rbind(chr1.data,chr6.data), LIS=c(chr1.L2rlts$LIS,chr6.L2rlts$LIS), gFDR=plis.rlts$aLIS, fdr001state=plis.rlts$States)
-all.Rlts[order(all.Rlts[,"LIS"])[1:10],]
+#not running
+#please uncomment to run
+#
+#data(GWAS.SampleData)
+#
+#chr1.data=GWAS.SampleData[which(GWAS.SampleData[,"CHR"]==1),]
+#chr6.data=GWAS.SampleData[which(GWAS.SampleData[,"CHR"]==6),]
+#
+##Make sure SNPs in the linear physical order
+#chr1.data<-chr1.data[order(chr1.data[,"BP"]),]
+#chr6.data<-chr6.data[order(chr6.data[,"BP"]),]
+#
+##convert p values by chi_sq test to z values; odds ratio (OR) is needed.
+#chr1.zval<-rep(0, nrow(chr1.data))
+#chr1.ors=(chr1.data[,"OR"]>1)
+#chr1.zval[chr1.ors]<-qnorm(chr1.data[chr1.ors, "P"]/2, 0, 1, lower.tail=FALSE)
+#chr1.zval[!chr1.ors]<-qnorm(chr1.data[!chr1.ors, "P"]/2, 0, 1, lower.tail=TRUE)
+#chr1.L2rlts=em.hmm(chr1.zval)
+#
+#chr6.zval<-rep(0, nrow(chr6.data))
+#chr6.ors=(chr6.data[,"OR"]>1)
+#chr6.zval[chr6.ors]<-qnorm(chr6.data[chr6.ors, "P"]/2, 0, 1, lower.tail=FALSE)
+#chr6.zval[!chr6.ors]<-qnorm(chr6.data[!chr6.ors, "P"]/2, 0, 1, lower.tail=TRUE)
+#chr6.L2rlts=em.hmm(chr6.zval)
+#
+##Note that for analyzing a chromosome in real GWAS dataset, em.hmm can take as long as 10+ hrs
+##L=2 or 3 is recommended for GWAS based on our experience
+##em.hmm can be run in parallel for different chromosomes before applying the PLIS procedure
+#plis.rlts=plis(c(chr1.L2rlts$LIS,chr6.L2rlts$LIS),fdr=0.01)
+#all.Rlts=cbind(rbind(chr1.data,chr6.data), LIS=c(chr1.L2rlts$LIS,chr6.L2rlts$LIS), gFDR=plis.rlts$aLIS, fdr001state=plis.rlts$States)
+#all.Rlts[order(all.Rlts[,"LIS"])[1:10],]
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
