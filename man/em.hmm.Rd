@@ -124,7 +124,8 @@ states=plis(c(grp1.BICrlts$LIS,grp2.BICrlts$LIS),fdr=0.1,adjust=FALSE)$States
 ##L=2 or 3 is recommended for GWAS based on our experience
 ##em.hmm can be run in parallel for different chromosomes before applying the PLIS procedure
 #plis.rlts=plis(c(chr1.L2rlts$LIS,chr6.L2rlts$LIS),fdr=0.01)
-#all.Rlts=cbind(rbind(chr1.data,chr6.data), LIS=c(chr1.L2rlts$LIS,chr6.L2rlts$LIS), gFDR=plis.rlts$aLIS, fdr001state=plis.rlts$States)
+#all.Rlts=cbind(rbind(chr1.data,chr6.data), LIS=c(chr1.L2rlts$LIS,chr6.L2rlts$LIS), 
+#gFDR=plis.rlts$aLIS, fdr001state=plis.rlts$States)
 #all.Rlts[order(all.Rlts[,"LIS"])[1:10],]
 
 }
